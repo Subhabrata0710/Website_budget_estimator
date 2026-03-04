@@ -10,8 +10,8 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: #0d0d0d;
-    color: white;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,93 +19,166 @@ body {
 }
 
 .container {
-    background: #111;
-    padding: 40px;
-    border-radius: 15px;
+    background: #121212;
+    padding: 40px 30px;
+    border-radius: 20px;
     width: 95%;
-    max-width: 750px;
-    box-shadow: 0 0 40px rgba(0, 140, 255, 0.15);
+    max-width: 700px;
+    box-shadow: 0 10px 40px rgba(0, 170, 255, 0.2);
     border: 1px solid #1f1f1f;
 }
 
 h1 {
     text-align: center;
     color: #00aaff;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+    font-size: 28px;
+    letter-spacing: 1px;
 }
 
 label {
     font-size: 14px;
-    color: #ccc;
+    color: #aaa;
+    margin-top: 10px;
 }
 
 input {
     width: 100%;
-    padding: 12px;
+    padding: 14px 12px;
     margin: 8px 0 20px;
-    border-radius: 8px;
-    border: 1px solid #222;
-    background: #1a1a1a;
-    color: white;
+    border-radius: 12px;
+    border: 1px solid #333;
+    background: #1e1e1e;
+    color: #fff;
+    font-size: 14px;
+    transition: border 0.3s, background 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #00aaff;
+    background: #232323;
 }
 
 .checkbox-group label {
-    display: block;
-    margin-bottom: 10px;
-    cursor: pointer;
+  display: flex;
+  align-items: flex-start;   /* aligns checkbox with text properly */
+  gap: 10px;                 /* space between checkbox and text */
+  cursor: pointer;
+  color: #ddd;
+  margin-top: 16px;
+  font-size: 14px;
 }
 
+.checkbox-group label input {
+  width: 18px;
+  height: 18px;
+  accent-color: #00aaff;
+  cursor: pointer;
+  margin-top: 3px;           /* slight vertical adjustment */
+}
+
+.checkbox-group label .text-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox-group label .desc {
+  font-size: 12px;
+  color: #7aaedb;
+  margin-top: 4px;
+  line-height: 1.4;
+}
 button {
     width: 100%;
     padding: 14px;
-    border-radius: 8px;
+    border-radius: 12px;
     border: none;
     font-weight: bold;
     cursor: pointer;
     margin-top: 10px;
+    font-size: 16px;
+    transition: 0.3s all;
 }
 
 .calculate-btn {
     background: #00aaff;
-    color: black;
+    color: #fff;
+}
+
+.calculate-btn:hover {
+    background: #008ecc;
 }
 
 .pdf-btn {
-    background: #222;
+    background: #1e1e1e;
     color: #00aaff;
     border: 1px solid #00aaff;
 }
 
+.pdf-btn:hover {
+    background: #00aaff;
+    color: #000;
+}
+
 .result-box {
     margin-top: 30px;
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #00aaff;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 th {
     background: #00aaff;
-    color: black;
+    color: #fff;
     padding: 12px;
     text-align: left;
+    border-radius: 8px 8px 0 0;
 }
 
 td {
     padding: 12px;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #333;
 }
 
 tr:hover {
-    background: #1a1a1a;
+    background: #222;
 }
 
 .total-row td {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
-    color: #ffd000;
+    color: #ffd700;
+}
+
+.base-package-info {
+  background-color: #1e1e1e;
+  border: 1px solid #00aaff;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  color: #00aaff;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.base-package-info h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.base-package-info ul {
+  margin: 0;
+  padding-left: 20px;
+}
+.base-package-info li {
+  margin-bottom: 6px;
 }
 </style>
 </head>
@@ -115,18 +188,66 @@ tr:hover {
 <div class="container">
 <h1>Website Budget Estimator</h1>
 
+<div class="base-package-info">
+  <h3>Base Package Includes:</h3>
+  <ul>
+    <li>Home page</li>
+    <li>About Us page</li>
+    <li>Program page</li>
+    <li>Contact page</li>
+    <li>Venue page</li>
+    <li>Sponsor page</li>
+    <li>Committee page</li>
+    <li>Speaker page</li>
+    <li>Register page</li>
+    <li>Login page </li>
+  </ul>
+</div>
+
 <label>Number of Pages</label>
 <input type="number" id="pages" value="10" min="1">
 
-<label>Delivery Timeline (Days)</label>
+<label>Delivery Timeline of version 1 of the Website (Days)</label>
 <input type="number" id="days" value="7" min="1">
 
 <div class="checkbox-group">
-<label><input type="checkbox" id="service"> Additional Service (+₹2000)</label>
-<label><input type="checkbox" id="database"> Database Setup (+₹1000)</label>
-<label><input type="checkbox" id="email"> Auto Email Setup (+₹1000)</label>
-</div>
+  <label>
+    <input type="checkbox" id="contentUpdates">
+      <div class="text-wrapper">
+        Content Updates Package (+₹3000)
+        <div class="desc">
+        Includes minor edits such as image swaps, text corrections, adding or removing content on existing pages, and fixing typos. (Only applicable to content and images provided by the client.)
+        </div>
+    </div>
+    </label>
 
+  <label>
+    <input type="checkbox" id="majorChanges">
+    <div class="text-wrapper">
+        Major Design/Feature Changes (+₹5000)
+        <div class="desc">
+        Covers bigger work like new pages, complex layout changes, functionality changes, etc.
+        </div>
+    </div>
+  </label>
+
+    <label>
+    <input type="checkbox" id="database">
+    <div class="text-wrapper">
+        Database or Backend Changes (+₹1000)
+        <div class="desc">
+        For backend work like database setup, email automation, integrations.
+        </div>
+    </div>
+    </label>
+
+    <!-- <label>
+    <input type="checkbox" id="email">
+    <div class="text-wrapper">
+        Auto Email Setup (+₹1000)
+    </div>
+    </label> -->
+</div>
 <button class="calculate-btn" onclick="calculate()">Calculate Estimate</button>
 
 <div class="result-box" id="resultBox" style="display:none;">
@@ -162,7 +283,8 @@ function calculate() {
     else if (days <= 6) urgencyMultiplier = 0.10;
 
     let addonCost = 0;
-    if (document.getElementById("service").checked) addonCost += 2000;
+    if (document.getElementById("majorChanges").checked) addonCost += 5000;
+    if (document.getElementById("contentUpdates").checked) addonCost += 3000;
     if (document.getElementById("database").checked) addonCost += 1000;
     if (document.getElementById("email").checked) addonCost += 1000;
 
